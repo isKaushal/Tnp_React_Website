@@ -2,26 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&family=Work+Sans:wght@100;200;300;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* --clr-pink: #fab60d; */
+  --clr-pink: rgba(254, 54, 113);
+  --clr-gray: rgba(75, 76, 118);
+  --clr-green: #1d880d;
+  --clr-yellow: rgba(255, 192, 0);
+  --clr-bglite: rgba(240, 248, 255);
+  --clr-bgcircle: rgba(222, 238, 252);
+  --transition: 0.3s all;
+  --transition-ms: 150ms all;
+  --transition-long: 0.7s all;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* color classes */
+
+.clr-pink {
+  color: var(--clr-pink);
 }
 
+.bg-pink {
+  background-color: var(--clr-pink);
+}
+
+.clr-gray {
+  color: var(--clr-gray);
+}
+
+.bg-gray {
+  background-color: var(--clr-gray);
+}
+
+/* color classes */
+
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  scroll-behavior: smooth;
 }
