@@ -1,0 +1,3 @@
+9, 10 => science or maths
+
+11, 12 => Accounts, Eco, Biology, Applyed Maths, Physics, Cemistry, Stats 

@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 
 // components
 import { Bars, Xmark, Cross } from "../components/icons.js";
+import { useRef, useState } from "react";
 
 const NavbarStyles = styled.div`
   nav {
@@ -58,15 +59,11 @@ const NavbarStyles = styled.div`
     align-items: center;
   }
 
-  .side_bar_toggler i {
+  .side_bar_toggler {
     cursor: pointer;
     padding: 0rem 1rem;
     font-size: 20px;
   }
-
-  /* input {
-  display: none;
-} */
 
   /*/////////////// mobile side nav  */
 
@@ -101,7 +98,6 @@ const NavbarStyles = styled.div`
   }
 
   .mobile_links_part ul div {
-    /* display: flex; */
     justify-content: center;
     align-items: center;
   }
@@ -136,14 +132,6 @@ const NavbarStyles = styled.div`
     height: 100%;
   }
 
-  /* nav toggler className */
-
-  .side_bar_active {
-    right: 0 !important;
-    overflow: hidden !important;
-  }
-
-  /* nav toggler className */
   /*///////////////// mobile side nav  */
 
   @media screen and (max-width: 400px) {
@@ -240,46 +228,17 @@ const NavbarStyles = styled.div`
 `;
 
 export default function Navbar() {
-  //   const open = document.getElementById("side_bar_toggler_btn");
-  //   const close = document.getElementById("side_bar_closer");
-
-  //   const nav = document.getElementById("nav");
-  //   const side_bar = document.getElementById("side_bar");
-
-  //   nav.style.overflow = "hidden";
-  //   open.addEventListener("click", () => {
-  //     side_bar.classList.add("side_bar_active");
-  //     nav.removeAttribute("style");
-  //   });
-
-  //   close.addEventListener("click", () => {
-  //     setTimeout(() => {
-  //       nav.style.overflow = "hidden";
-  //     }, 600);
-  //     side_bar.classList.remove("side_bar_active");
-  //   });
-
-  //   // nav bar toggler
-  //   // mobile nav bar auto close
-
-  //   const li = document.querySelectorAll("li");
-
-  //   li.forEach((value) => {
-  //     value.addEventListener("click", () => {
-  //       setTimeout(() => {
-  //         nav.style.overflow = "hidden";
-  //       }, 600);
-  //       side_bar.classList.remove("side_bar_active");
-  //     });
-  //   });
+  const [isOpen, setIsopen] = useState("false");
 
   return (
     <NavbarStyles>
-      <nav id="nav">
+      <nav>
         <div className="logo_part">
-          <Image className="ml-5" width={200} height={100} src="/images/logo.webp" alt="" />
-
+          <Image className="ml-5" width={200} height={100} src="/images/logo.webp" alt="" priority />
           <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
             <li>
               <a href="#how">HOW DOES IT WORK?</a>
             </li>
@@ -309,15 +268,28 @@ export default function Navbar() {
             </div>
           </ul>
           <div className="side_bar_toggler">
-            <Bars />
+            <Bars
+              onClick={() => {
+                setIsopen(true);
+              }}
+            />
           </div>
         </div>
-
-        <div id="side_bar" className="absolute bg-clrgray h-screen p-8 w-80 top-0 -right-full transition-all duration-1000">
+        <div
+          className={
+            isOpen === true
+              ? `absolute bg-clrgray h-screen p-8 w-80 top-0 right-0 transition-all duration-1000 xl:hidden`
+              : `absolute bg-clrgray h-screen p-8 w-80 top-0 -right-full transition-all duration-1000 xl:hidden`
+          }
+        >
           <div className="mobile_logo_part">
             <div className="flex justify-between items-center text-2xl text-white">
-              <Image width={200} height={100} src="/images/logo.webp" alt="" />
-              <Xmark />
+              <Image width={200} height={100} src="/images/logo.webp" alt="" priority />
+              <Xmark
+                onClick={() => {
+                  setIsopen(false);
+                }}
+              />
             </div>
             <ul className="mt-14">
               <li>
