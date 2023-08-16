@@ -6,6 +6,8 @@ export default function Input({
   className,
   name,
   required,
+  maxLength,
+  minLength,
 }) {
   return (
     <div>
@@ -17,6 +19,8 @@ export default function Input({
         onChange={onChange}
         required={required}
         className={`${className} bg-white w-80`}
+        maxLength={maxLength}
+        minLength={minLength}
       />
     </div>
   );
